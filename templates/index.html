@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure the entire viewport height is covered */
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            box-sizing: border-box; /* Ensure padding and border do not increase width */
+        }
+        h1 {
+            color: #333;
+        }
+        h2, h3 {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .section {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .file-input-container {
+            position: relative;
+            margin: 20px auto;
+        }
+        .file-input-container input[type="file"] {
+            display: none;
+        }
+        .file-input-label {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .file-input-label:hover {
+            background-color: #007BB5;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Breast Cancer Detection</h1>
+        <h2>Upload your parameters file</h2>
+        <div class="section">
+            <h3>About</h3>
+            <p>Welcome to our breast cancer detection tool. Our model employs logistic regression, a robust statistical method, to analyze 30 distinct parameters that are critical in diagnosing breast cancer. By evaluating these parameters, our model aims to provide accurate and early detection of breast cancer.</p>
+            <p>Through rigorous testing, our model has achieved a remarkable accuracy rate of 95% on test data, showcasing its effectiveness in the field of medical diagnostics.</p>
+        </div>
+        <div class="section">
+            <h3>Guide</h3>
+            <p>Please upload a CSV file containing the following parameters (in this specific order):</p>
+            <ul style="list-style-type: none; padding: 0;">
+                <li>radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean, compactness_mean, concavity_mean, concave points_mean, symmetry_mean, fractal_dimension_mean,</li>
+                <li>radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se, concavity_se, concave points_se, symmetry_se, fractal_dimension_se,</li>
+                <li>radius_worst, texture_worst, perimeter_worst, area_worst, smoothness_worst, compactness_worst, concavity_worst, concave points_worst, symmetry_worst, fractal_dimension_worst</li>
+            </ul>
+            <p>Ensure that your file is properly formatted and contains all necessary columns for accurate prediction.</p>
+        </div>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="file-input-container">
+                <label class="file-input-label" for="file">Choose File</label>
+                <input type="file" id="file" name="file" required>
+            </div>
+            <input type="submit" value="Upload and Predict">
+        </form>
+    </div>
+</body>
+</html>
